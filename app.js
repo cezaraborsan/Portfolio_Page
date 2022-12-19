@@ -1,6 +1,6 @@
 const loadText = document.querySelector(".loading-text");
 const container = document.querySelector(".container");
-const scollTop = document.querySelector(".up-arrow");
+const scollTop = document.querySelector(".up-arrow-btn");
 
 // let load = 0;
 
@@ -55,3 +55,5 @@ const disableDarkMode = () => {
 darkModeToggle.addEventListener("click", () => {
   document.body.classList.toggle("darkmode");
 });
+
+//

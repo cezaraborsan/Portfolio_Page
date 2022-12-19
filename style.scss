@@ -27,9 +27,10 @@ $paragraphs-color: rgba(17, 46, 80, 0.5);
 
 @mixin container-width {
   max-width: 1440px;
+  min-width: 375px;
   width: 100%;
   margin: 0 auto;
-  padding-inline: 10rem;
+  padding-inline: 2rem;
 }
 
 @mixin box-shadow {
@@ -77,16 +78,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1 {
-  font-size: 3rem; /* font-size: 48px */
-  font-size: 90px;
+  font-size: 2.5rem; /* font-size: 48px */
 }
 
 h2 {
-  font-size: 1.5rem; /* font-size: 24px */
+  font-size: 1.25rem; /* font-size: 24px */
 }
 
 h3 {
-  font-size: 1.25rem; /* font-size: 20px */
+  font-size: 1rem; /* font-size: 20px */
 }
 
 h2,
@@ -99,17 +99,17 @@ a {
   text-decoration: none;
 }
 
-header {
+.navbar {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgb(255, 238, 216);
+  backdrop-filter: blur(4px);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgb(255, 238, 216);
-  backdrop-filter: blur(4px);
 
-  nav {
+  .navbar-content {
     @include container-width;
     display: flex;
     justify-content: space-between;
@@ -118,21 +118,21 @@ header {
   }
 
   .navbar-logo {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 500;
   }
 
   .navbar-buttons {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+
     a {
       color: var(--clr-dark);
       background-color: transparent;
       border: none;
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 400;
       cursor: pointer;
-      position: relative;
     }
 
     a::before {
@@ -168,6 +168,7 @@ main {
 
     .title {
       position: relative;
+      padding-bottom: 0.5rem;
 
       span {
         display: block;
@@ -175,8 +176,8 @@ main {
     }
 
     .ocupation {
-      font-size: 1.25rem;
       text-transform: uppercase;
+      font-weight: 500;
     }
 
     .description {
@@ -188,8 +189,10 @@ main {
 
   .flex-section {
     display: flex;
+    flex-direction: column;
     gap: 1.5rem;
-    margin: 0 96px 8rem 96px;
+    // margin: 0 96px 8rem 96px;
+    margin-bottom: 8rem;
 
     .info {
       display: flex;
@@ -199,6 +202,7 @@ main {
       .section-title::after {
         content: url(../images/rightarrow.svg);
         float: right;
+        transform: rotate(90deg);
       }
 
       .info-text {
@@ -212,7 +216,9 @@ main {
 
       img {
         border-radius: 1rem;
-        @include box-shadow();
+        border: 1px solid #112e50;
+        width: 300px;
+        max-width: 100%;
       }
 
       &:not(:last-child) {
@@ -269,12 +275,14 @@ main {
 .aboutme-section {
   img {
     border-radius: 1rem;
-    @include box-shadow;
+    width: 300px;
+    max-width: 100%;
   }
 }
 
 .contact-section {
-  margin: 0 96px 8rem 96px;
+  // margin: 0 96px 8rem 96px;
+  margin-bottom: 8rem;
 
   .section-title {
     padding-bottom: 1rem;
@@ -283,7 +291,7 @@ main {
   .contact-info {
     padding-top: 1rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 2rem;
     .links {
       display: flex;
@@ -398,4 +406,77 @@ header {
 .visible {
   opacity: 1;
   transform: translateX(0);
+}
+
+@media (min-width: 576px) {
+  h1 {
+    font-size: 3rem; /* font-size: 48px */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* font-size: 24px */
+  }
+
+  h3 {
+    font-size: 1.25rem; /* font-size: 20px */
+  }
+
+  main {
+    .flex-section {
+      .project {
+        img {
+          width: 400px;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    .navbar-logo {
+      font-size: 1.5rem;
+    }
+
+    .navbar-buttons {
+      a {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  main {
+    .flex-section {
+      display: flex;
+      flex-direction: row;
+      margin: 0 96px 8rem 96px;
+
+      .info {
+        max-width: 50%;
+
+        .section-title::after {
+          transform: rotate(0deg);
+        }
+      }
+
+      .project {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .contact-section {
+    margin: 0 96px 8rem 96px;
+
+    .contact-info {
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
 }

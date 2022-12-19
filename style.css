@@ -50,25 +50,25 @@ body::-webkit-scrollbar-thumb {
 
 .container {
   max-width: 1440px;
+  min-width: 375px;
   width: 100%;
   margin: 0 auto;
-  padding-inline: 10rem;
+  padding-inline: 2rem;
   position: relative;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   /* font-size: 48px */
-  font-size: 90px;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   /* font-size: 24px */
 }
 
 h3 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   /* font-size: 20px */
 }
 
@@ -82,23 +82,24 @@ a {
   text-decoration: none;
 }
 
-header {
+.navbar {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid #ffeed8;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid #ffeed8;
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
 }
 
-header nav {
+.navbar .navbar-content {
   max-width: 1440px;
+  min-width: 375px;
   width: 100%;
   margin: 0 auto;
-  padding-inline: 10rem;
+  padding-inline: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,29 +112,28 @@ header nav {
   height: 4.5rem;
 }
 
-header .navbar-logo {
-  font-size: 1.5rem;
+.navbar .navbar-logo {
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
-header .navbar-buttons {
+.navbar .navbar-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
 
-header .navbar-buttons a {
+.navbar .navbar-buttons a {
   color: var(--clr-dark);
   background-color: transparent;
   border: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
-  position: relative;
 }
 
-header .navbar-buttons a::before {
+.navbar .navbar-buttons a::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -153,7 +153,7 @@ header .navbar-buttons a::before {
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 
-header .navbar-buttons a:hover::before {
+.navbar .navbar-buttons a:hover::before {
   -webkit-transform-origin: left;
           transform-origin: left;
   -webkit-transform: scaleX(1);
@@ -180,6 +180,7 @@ main .hero-section {
 
 main .hero-section .title {
   position: relative;
+  padding-bottom: 0.5rem;
 }
 
 main .hero-section .title span {
@@ -187,8 +188,8 @@ main .hero-section .title span {
 }
 
 main .hero-section .ocupation {
-  font-size: 1.25rem;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 main .hero-section .description {
@@ -201,8 +202,12 @@ main .flex-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1.5rem;
-  margin: 0 96px 8rem 96px;
+  margin-bottom: 8rem;
 }
 
 main .flex-section .info {
@@ -219,6 +224,8 @@ main .flex-section .info {
 main .flex-section .info .section-title::after {
   content: url(../images/rightarrow.svg);
   float: right;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 main .flex-section .info .info-text {
@@ -232,16 +239,9 @@ main .flex-section .project {
 
 main .flex-section .project img {
   border-radius: 1rem;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  border: 1px solid rgba(25, 86, 156, 0.5);
-  -webkit-box-shadow: 10px 10px 0px 1px rgba(25, 86, 156, 0.5);
-          box-shadow: 10px 10px 0px 1px rgba(25, 86, 156, 0.5);
-}
-
-main .flex-section .project img:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(25, 86, 156, 0.5);
-          box-shadow: 0px 0px 0px 0px rgba(25, 86, 156, 0.5);
+  border: 1px solid #112e50;
+  width: 300px;
+  max-width: 100%;
 }
 
 main .flex-section .project:not(:last-child) {
@@ -294,20 +294,12 @@ main .flex-section .project .project-btns .secondary-btn {
 
 .aboutme-section img {
   border-radius: 1rem;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  border: 1px solid rgba(25, 86, 156, 0.5);
-  -webkit-box-shadow: 10px 10px 0px 1px rgba(25, 86, 156, 0.5);
-          box-shadow: 10px 10px 0px 1px rgba(25, 86, 156, 0.5);
-}
-
-.aboutme-section img:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px rgba(25, 86, 156, 0.5);
-          box-shadow: 0px 0px 0px 0px rgba(25, 86, 156, 0.5);
+  width: 300px;
+  max-width: 100%;
 }
 
 .contact-section {
-  margin: 0 96px 8rem 96px;
+  margin-bottom: 8rem;
 }
 
 .contact-section .section-title {
@@ -320,9 +312,10 @@ main .flex-section .project .project-btns .secondary-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 2rem;
 }
 
@@ -489,5 +482,72 @@ header {
   opacity: 1;
   -webkit-transform: translateX(0);
           transform: translateX(0);
+}
+
+@media (min-width: 576px) {
+  h1 {
+    font-size: 3rem;
+    /* font-size: 48px */
+  }
+  h2 {
+    font-size: 1.5rem;
+    /* font-size: 24px */
+  }
+  h3 {
+    font-size: 1.25rem;
+    /* font-size: 20px */
+  }
+  main .flex-section .project img {
+    width: 400px;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar .navbar-logo {
+    font-size: 1.5rem;
+  }
+  .navbar .navbar-buttons a {
+    font-size: 1.25rem;
+  }
+  main .flex-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 0 96px 8rem 96px;
+  }
+  main .flex-section .info {
+    max-width: 50%;
+  }
+  main .flex-section .info .section-title::after {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  main .flex-section .project {
+    width: 100%;
+  }
+  main .flex-section .project img {
+    width: 100%;
+  }
+  .contact-section {
+    margin: 0 96px 8rem 96px;
+  }
+  .contact-section .contact-info {
+    padding-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
 }
 /*# sourceMappingURL=style.css.map */
