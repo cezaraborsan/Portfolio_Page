@@ -47,6 +47,8 @@ scollTop.addEventListener("click", (e) => {
 // DARK MODE
 
 const darkModeToggle = document.querySelector("#dark-mode-toggle");
+const lightMode = document.querySelector(".lightmode-icon");
+const darkMode = document.querySelector(".darkmode-icon");
 
 const disableDarkMode = () => {
   document.body.classList.remove("darkmode");
@@ -54,6 +56,11 @@ const disableDarkMode = () => {
 
 darkModeToggle.addEventListener("click", () => {
   document.body.classList.toggle("darkmode");
+  if (body.classList.contains("darkmode")) {
+    lightMode.style.transform = "translateX(0vw)";
+    darkMode.style.transform = "translateX(100vw)";
+  } else {
+    lightMode.style.transform = "translateX(100vw)";
+    darkMode.style.transform = "translateX(0vw)";
+  }
 });
-
-//
