@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap");
 :root {
-  --clr-light: #fff4f4;
-  --clr-dark: #112e50;
-  --clr-secondary: rgba(17, 46, 80, 0.5);
+  --clr-light: #ececec;
+  --clr-dark: #1c1c1c;
+  --clr-secondary: rgba(28, 28, 28, 0.6);
   --foreground: var(--clr-dark);
   --background: var(--clr-light);
   --paragraphs: var(--clr-secondary);
 }
 
 .darkmode {
-  --clr-light: #fff4f4;
-  --clr-dark: #112e50;
-  --clr-secondary: rgba(255, 244, 244, 0.5);
+  --clr-light: #ececec;
+  --clr-dark: #1c1c1c;
+  --clr-secondary: rgba(236, 236, 236, 0.5);
   --foreground: var(--clr-light);
   --background: var(--clr-dark);
   --paragraphs: var(--clr-secondary);
@@ -42,36 +42,38 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background-color: #ffffff;
+  background-color: var(--clr-light);
 }
 
 body::-webkit-scrollbar-thumb {
-  border: 1px solid #112e50;
+  border: 1px solid var(--clr-dark);
   border-radius: 1rem;
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 992px;
   min-width: 375px;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
+  height: auto;
   padding-inline: 2rem;
   position: relative;
 }
 
 h1 {
   font-size: 2.5rem;
-  /* font-size: 48px */
+  /* font-size: 40px */
+  padding-top: 3rem;
 }
 
 h2 {
-  font-size: 1.25rem;
-  /* font-size: 24px */
+  font-size: 1.1rem;
+  /* font-size: 20px */
 }
 
 h3 {
   font-size: 1rem;
-  /* font-size: 20px */
+  /* font-size: 17.6px */
 }
 
 h2,
@@ -84,9 +86,13 @@ a {
   text-decoration: none;
 }
 
+.info-text {
+  color: var(--clr-secondary);
+}
+
 .navbar {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid #ffeed8;
+  background-color: rgba(236, 236, 236, 0.8);
+  border-bottom: 1px solid #858585;
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   position: fixed;
@@ -97,10 +103,11 @@ a {
 }
 
 .navbar .navbar-content {
-  max-width: 1440px;
+  max-width: 992px;
   min-width: 375px;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
+  height: auto;
   padding-inline: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -137,6 +144,8 @@ a {
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+  position: relative;
+  display: none;
 }
 
 .navbar .navbar-buttons a::before {
@@ -183,12 +192,15 @@ a {
           justify-content: center;
   position: relative;
   overflow-x: hidden;
+  cursor: pointer;
 }
 
 .navbar .navbar-buttons button svg {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   position: absolute;
+  stroke: var(--clr-dark);
+  stroke-width: 0.5px;
 }
 
 .navbar .navbar-buttons button .darkmode-icon {
@@ -201,7 +213,7 @@ a {
           transform: translateX(100vw);
 }
 
-main .hero-section {
+main .intro-section {
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -220,24 +232,23 @@ main .hero-section {
   position: relative;
 }
 
-main .hero-section .title {
+main .intro-section .title {
   position: relative;
   padding-bottom: 0.5rem;
 }
 
-main .hero-section .title span {
+main .intro-section .title span {
   display: block;
 }
 
-main .hero-section .ocupation {
+main .intro-section .ocupation {
   text-transform: uppercase;
   font-weight: 500;
 }
 
-main .hero-section .description {
+main .intro-section .description {
   padding-top: 1rem;
   max-width: 540px;
-  color: var(--clr-secondary);
 }
 
 main .flex-section {
@@ -250,9 +261,10 @@ main .flex-section {
           flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 8rem;
+  padding-bottom: 3rem;
 }
 
-main .flex-section .info {
+main .flex-section .details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -263,7 +275,7 @@ main .flex-section .info {
   gap: 1rem;
 }
 
-main .flex-section .info .section-title::after {
+main .flex-section .details .section-title::after {
   content: "";
   background: var(--foreground);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 -3.49691e-07L6.59 1.41L12.17 7L-3.93402e-07 7L-3.0598e-07 9L12.17 9L6.58 14.58L8 16L16 8L8 -3.49691e-07Z' fill='%23191150'/%3E%3C/svg%3E%0A");
@@ -278,20 +290,89 @@ main .flex-section .info .section-title::after {
           transform: rotate(90deg);
 }
 
-main .flex-section .info .info-text {
+main .flex-section .details .info-text {
   padding-top: 1rem;
-  border-top: 1px solid #ffc06f;
+  border-top: 1px solid rgba(133, 133, 133, 0.2);
+}
+
+main .flex-section .project-btns,
+main .flex-section .aboutme-info {
+  padding-top: 0.4rem;
+}
+
+main .flex-section .project-btns a,
+main .flex-section .aboutme-info a {
+  color: var(--foreground);
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+main .flex-section .project-btns .primary-btn,
+main .flex-section .aboutme-info .primary-btn {
+  font-weight: 700;
+  border: 1px solid var(--foreground);
+  border-radius: 31px;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+main .flex-section .project-btns .primary-btn:hover,
+main .flex-section .aboutme-info .primary-btn:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+main .flex-section .project-btns .secondary-btn,
+main .flex-section .aboutme-info .secondary-btn {
+  font-weight: 600;
+  position: relative;
+}
+
+main .flex-section .project-btns .secondary-btn::after,
+main .flex-section .aboutme-info .secondary-btn::after {
+  content: "";
+  background: var(--foreground);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
+          mask-image: url("data:image/svg+xml,%3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  padding-left: 1.5rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+main .flex-section .project-btns .secondary-btn:hover::after,
+main .flex-section .aboutme-info .secondary-btn:hover::after {
+  padding-left: 2.2rem;
 }
 
 main .flex-section .project {
   text-transform: uppercase;
 }
 
+main .flex-section .project .project-details {
+  margin-block: 2rem;
+  background-color: #858585;
+  display: none;
+}
+
 main .flex-section .project img {
   border-radius: 1rem;
-  border: 1px solid #112e50;
+  border: 1px solid var(--foreground);
   width: 300px;
   max-width: 100%;
+  cursor: pointer;
 }
 
 main .flex-section .project:not(:last-child) {
@@ -306,52 +387,13 @@ main .flex-section .project .software-used {
   margin-bottom: 1rem;
 }
 
-main .flex-section .project .project-btns::after {
-  content: "";
-  background: var(--foreground);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-          mask-image: url("data:image/svg+xml,%3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
-  padding-left: 1.5rem;
-  cursor: pointer;
-}
-
-main .flex-section .project .project-btns button {
-  color: var(--foreground);
-  font-size: 1rem;
-  background-color: transparent;
-  border: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-main .flex-section .project .project-btns .primary-btn {
-  font-weight: 700;
-  border: 2px solid var(--foreground);
-  border-radius: 31px;
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-main .flex-section .project .project-btns .primary-btn:hover {
-  background-color: var(--foreground);
-  color: var(--background);
-}
-
-main .flex-section .project .project-btns .secondary-btn {
-  font-weight: 600;
+.aboutme-section {
+  margin: 0 0 8rem 0;
 }
 
 .aboutme-section img {
   border-radius: 1rem;
-  width: 300px;
+  width: 400px;
   max-width: 100%;
 }
 
@@ -361,7 +403,22 @@ main .flex-section .project .project-btns .secondary-btn {
 
 .contact-section .section-title {
   padding-bottom: 1rem;
-  border-bottom: 1px solid #ffeed8;
+  border-bottom: 1px solid rgba(133, 133, 133, 0.2);
+}
+
+.contact-section .section-title::after {
+  content: "";
+  background: var(--foreground);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 -3.49691e-07L6.59 1.41L12.17 7L-3.93402e-07 7L-3.0598e-07 9L12.17 9L6.58 14.58L8 16L16 8L8 -3.49691e-07Z' fill='%23191150'/%3E%3C/svg%3E%0A");
+          mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 -3.49691e-07L6.59 1.41L12.17 7L-3.93402e-07 7L-3.0598e-07 9L12.17 9L6.58 14.58L8 16L16 8L8 -3.49691e-07Z' fill='%23191150'/%3E%3C/svg%3E%0A");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  padding: 1rem 0 0 1rem;
+  float: right;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .contact-section .contact-info {
@@ -463,30 +520,17 @@ header {
           animation-timing-function: ease;
 }
 
-.hero-section .animate-line span,
+.intro-section .animate-line span,
 .animate-title .animate-text {
   opacity: 0;
 }
 
-.hero-section .animate-line {
+.intro-section .animate-line {
   display: block;
   overflow-y: hidden;
 }
 
-.hero-section .animate-title .animate-line.line1 span {
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
-  -webkit-animation-duration: 0.8s;
-          animation-duration: 0.8s;
-  -webkit-animation-name: bottomToTop;
-          animation-name: bottomToTop;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
-}
-
-.hero-section .animate-title .animate-line.line2 span {
+.intro-section .animate-title .animate-line.line1 span {
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
   -webkit-animation-duration: 0.8s;
@@ -499,9 +543,9 @@ header {
           animation-timing-function: ease;
 }
 
-.hero-section .animate-text-1 {
-  -webkit-animation-delay: 0.7s;
-          animation-delay: 0.7s;
+.intro-section .animate-title .animate-line.line2 span {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
@@ -512,9 +556,22 @@ header {
           animation-timing-function: ease;
 }
 
-.hero-section .animate-text-2 {
+.intro-section .animate-text-1 {
   -webkit-animation-delay: 0.8s;
           animation-delay: 0.8s;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-animation-name: bottomToTop;
+          animation-name: bottomToTop;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+.intro-section .animate-text-2 {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
@@ -541,18 +598,22 @@ header {
           transform: translateX(0);
 }
 
+.top {
+  padding-top: 6rem;
+}
+
 @media (min-width: 576px) {
   h1 {
     font-size: 3rem;
     /* font-size: 48px */
   }
   h2 {
-    font-size: 1.5rem;
-    /* font-size: 24px */
-  }
-  h3 {
     font-size: 1.25rem;
     /* font-size: 20px */
+  }
+  h3 {
+    font-size: 1.1rem;
+    /* font-size: 17.6px */
   }
   main .flex-section .project img {
     width: 400px;
@@ -568,6 +629,7 @@ header {
     gap: 1.2rem;
   }
   .navbar .navbar-buttons a {
+    display: block;
     font-size: 1.25rem;
   }
   .navbar .navbar-buttons .switch {
@@ -586,12 +648,15 @@ header {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    margin: 0 96px 8rem 96px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0 0 8rem 0;
   }
-  main .flex-section .info {
+  main .flex-section .details {
     max-width: 50%;
   }
-  main .flex-section .info .section-title::after {
+  main .flex-section .details .section-title::after {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
   }
@@ -602,7 +667,7 @@ header {
     width: 100%;
   }
   .contact-section {
-    margin: 0 96px 8rem 96px;
+    margin: 0 0 8rem 0;
   }
   .contact-section .contact-info {
     padding-top: 1rem;

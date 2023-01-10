@@ -1,6 +1,40 @@
 const loadText = document.querySelector(".loading-text");
 const container = document.querySelector(".container");
 const scollTop = document.querySelector(".up-arrow-btn");
+const projectsBtn = document.querySelector(".projects-btn");
+const projectsSection = document.querySelector(".projects-section");
+const contactBtn = document.querySelector(".contact-btn");
+const contactSection = document.querySelector(".contact-section");
+const aboutMeBtn = document.querySelector(".aboutme-btn");
+const aboutMeSection = document.querySelector(".aboutme-section");
+
+// Scroll sections into view (Porjects and Contact sections)
+
+projectsBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  scrollToTargetAdjusted(projectsSection);
+});
+
+contactBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  scrollToTargetAdjusted(contactSection);
+});
+
+aboutMeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  scrollToTargetAdjusted(aboutMeSection);
+});
+
+function scrollToTargetAdjusted(section) {
+  section.classList.remove("translate");
+  const headerOffset = 100;
+  const sectionPosition = section.getBoundingClientRect().top;
+  const offsetPosition = sectionPosition + window.pageYOffset - headerOffset;
+
+  window.scrollTo({
+    top: offsetPosition,
+  });
+}
 
 // let load = 0;
 
