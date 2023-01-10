@@ -81,20 +81,71 @@ scollTop.addEventListener("click", (e) => {
 // DARK MODE
 
 const darkModeToggle = document.querySelector("#dark-mode-toggle");
-const lightMode = document.querySelector(".lightmode-icon");
-const darkMode = document.querySelector(".darkmode-icon");
+const lightModeBtn = document.querySelector(".lightmode-icon");
+const darkModeBtn = document.querySelector(".darkmode-icon");
+let darkMode = localStorage.getItem("darkmode");
+
+// const disableDarkMode = () => {
+//   document.body.classList.remove("darkmode");
+// };
+
+const enableDarkMode = () => {
+  document.body.classList.add("darkmode");
+  localStorage.setItem("darkmode", "enabled");
+  lightModeBtn.style.transform = "translateX(0vw)";
+  darkModeBtn.style.transform = "translateX(100vw)";
+};
 
 const disableDarkMode = () => {
   document.body.classList.remove("darkmode");
+  localStorage.setItem("darkmode", "disabled");
+  lightModeBtn.style.transform = "translateX(100vw)";
+  darkModeBtn.style.transform = "translateX(0vw)";
 };
+
+if (darkMode === "enabled") {
+  enableDarkMode(); // set state of darkMode on page load
+}
 
 darkModeToggle.addEventListener("click", () => {
   document.body.classList.toggle("darkmode");
-  if (body.classList.contains("darkmode")) {
-    lightMode.style.transform = "translateX(0vw)";
-    darkMode.style.transform = "translateX(100vw)";
+
+  // if (body.classList.contains("darkmode")) {
+  //   lightMode.style.transform = "translateX(0vw)";
+  //   darkMode.style.transform = "translateX(100vw)";
+  // } else {
+  //   lightMode.style.transform = "translateX(100vw)";
+  //   darkMode.style.transform = "translateX(0vw)";
+  // }
+
+  darkMode = localStorage.getItem("darkmode"); // update darkMode when clicked
+  if (darkMode === "disabled") {
+    enableDarkMode();
   } else {
-    lightMode.style.transform = "translateX(100vw)";
-    darkMode.style.transform = "translateX(0vw)";
+    disableDarkMode();
   }
+});
+
+// LOADER
+
+const loader = document.querySelector(".loader");
+const loaderWrapper = document.querySelector(".loader-wrapper");
+
+function fadeIn() {
+  loader.classList.add("fadeIn");
+}
+
+function overflowVisible() {
+  body.style.overflowY = "scroll";
+}
+
+function translateWrapper() {
+  loaderWrapper.style.transform = "translateY(-200vh)";
+  loaderWrapper.style.visibility = "hidden";
+  setTimeout(overflowVisible, 1000);
+}
+
+window.addEventListener("load", (e) => {
+  fadeIn();
+  setTimeout(translateWrapper, 3500);
 });

@@ -17,6 +17,42 @@
   --paragraphs: var(--clr-secondary);
 }
 
+.loader-wrapper {
+  position: fixed;
+  background-color: var(--clr-dark);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+  opacity: 1;
+}
+
+.loader-wrapper .loader {
+  color: var(--clr-light);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 3.5s ease-in-out;
+  -moz-transition: opacity 3.5s ease-in-out;
+  -webkit-transition: opacity 3.5s ease-in-out;
+}
+
+.loader-wrapper .fadeIn {
+  opacity: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -35,17 +71,16 @@ body {
   color: var(--foreground);
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
+  overflow-y: hidden;
 }
 
 body::-webkit-scrollbar {
   width: 10px;
 }
 
+body::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-track {
   background-color: var(--clr-light);
-}
-
-body::-webkit-scrollbar-thumb {
   border: 1px solid var(--clr-dark);
   border-radius: 1rem;
 }
@@ -125,6 +160,7 @@ a {
 .navbar .navbar-logo {
   font-size: 1.25rem;
   font-weight: 500;
+  letter-spacing: 2px;
 }
 
 .navbar .navbar-buttons {
@@ -278,8 +314,8 @@ main .flex-section .details {
 main .flex-section .details .section-title::after {
   content: "";
   background: var(--foreground);
-  -webkit-mask-image: url("data:image/svg+xml, %3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-          mask-image: url("data:image/svg+xml, %3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 -3.49691e-07L6.59 1.41L12.17 7L-3.93402e-07 7L-3.0598e-07 9L12.17 9L6.58 14.58L8 16L16 8L8 -3.49691e-07Z' fill='%23191150'/%3E%3C/svg%3E%0A");
+          mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 -3.49691e-07L6.59 1.41L12.17 7L-3.93402e-07 7L-3.0598e-07 9L12.17 9L6.58 14.58L8 16L16 8L8 -3.49691e-07Z' fill='%23191150'/%3E%3C/svg%3E%0A");
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -304,8 +340,6 @@ main .flex-section .project-btns a,
 main .flex-section .aboutme-info a {
   color: var(--foreground);
   font-size: 1rem;
-  background-color: transparent;
-  border: none;
   text-transform: uppercase;
   cursor: pointer;
   -webkit-transition: all 0.3s;
@@ -508,8 +542,8 @@ header {
 }
 
 .navbar {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  -webkit-animation-delay: 4.2s;
+          animation-delay: 4.2s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
@@ -531,8 +565,8 @@ header {
 }
 
 .intro-section .animate-title .animate-line.line1 span {
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  -webkit-animation-delay: 4.3s;
+          animation-delay: 4.3s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
@@ -544,8 +578,8 @@ header {
 }
 
 .intro-section .animate-title .animate-line.line2 span {
-  -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
+  -webkit-animation-delay: 4.4s;
+          animation-delay: 4.4s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
@@ -557,8 +591,8 @@ header {
 }
 
 .intro-section .animate-text-1 {
-  -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
+  -webkit-animation-delay: 4.5s;
+          animation-delay: 4.5s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
@@ -570,8 +604,8 @@ header {
 }
 
 .intro-section .animate-text-2 {
-  -webkit-animation-delay: 0.9s;
-          animation-delay: 0.9s;
+  -webkit-animation-delay: 4.6s;
+          animation-delay: 4.6s;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
   -webkit-animation-name: bottomToTop;
