@@ -42,30 +42,53 @@ function scrollToTargetAdjusted(section) {
 
 // Intersection Observer, section pop up when scoll into view
 
-const target = document.querySelectorAll(".translate");
+// const target = document.querySelectorAll(".translate");
 const body = document.querySelector("body");
 
-const options = {
-  rootMargin: "-20px 0px 0px",
-};
+// const options = {
+//   rootMargin: "-20px 0px 0px",
+// };
 
-const translateOnScroll = new IntersectionObserver(function (
-  entries,
-  translateOnScroll
-) {
+// const translateOnScroll = new IntersectionObserver(function (
+//   entries,
+//   translateOnScroll
+// ) {
+//   entries.forEach((entry) => {
+//     if (entry.isIntersecting) {
+//       entry.target.classList.add("visible");
+//     } else {
+//       entry.target.classList.remove("visible");
+//     }
+//   });
+//   target.unobserve(section);
+// },
+// options);
+
+// target.forEach((section) => {
+//   translateOnScroll.observe(section);
+// });
+
+const elements = document.querySelectorAll(".translate");
+const callback = (str) => {
+  console.log(str);
+};
+const observer = new IntersectionObserver(handleIntersection);
+
+elements.forEach((obs) => {
+  observer.observe(obs);
+});
+
+function handleIntersection(entries, observer) {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
+    if (entry.intersectionRatio > 0) {
+      callback("observer-" + entry.target.getAttribute(".translate"));
       entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
     } else {
       entry.target.classList.remove("visible");
     }
   });
-},
-options);
-
-target.forEach((section) => {
-  translateOnScroll.observe(section);
-});
+}
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
