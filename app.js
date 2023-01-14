@@ -8,6 +8,15 @@ const contactSection = document.querySelector(".contact-section");
 const aboutMeBtn = document.querySelector(".aboutme-btn");
 const aboutMeSection = document.querySelector(".aboutme-section");
 
+//when refresh scroll to top
+
+
+
+
+
+
+
+
 // Scroll sections into view (Porjects and Contact sections)
 
 projectsBtn.addEventListener("click", (e) => {

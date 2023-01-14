@@ -1,14 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap");
 $text-color: #1c1c1c;
 $paragraphs-color: rgba(28, 28, 28, 0.8);
 $section-margins: 0 0 8rem 0;
 
 :root {
-  --clr-light: #ececec;
+  --clr-light: #fdfaf3;
   --clr-dark: #1c1c1c;
 
-  --clr-secondary: rgba(28, 28, 28, 0.6);
+  --clr-secondary: rgba(28, 28, 28, 0.8);
+
+  --clr-navbar: rgba(253, 250, 243, 0.8);
 
   --foreground: var(--clr-dark);
   --background: var(--clr-light);
@@ -16,10 +18,12 @@ $section-margins: 0 0 8rem 0;
 }
 
 .darkmode {
-  --clr-light: #ececec;
+  --clr-light: #fafdf3;
   --clr-dark: #1c1c1c;
 
-  --clr-secondary: rgba(236, 236, 236, 0.5);
+  --clr-secondary: rgba(236, 236, 236, 0.8);
+
+  --clr-navbar: rgba(28, 28, 28, 0.8);
 
   --foreground: var(--clr-light);
   --background: var(--clr-dark);
@@ -51,15 +55,6 @@ $section-margins: 0 0 8rem 0;
   padding-inline: 2rem;
 }
 
-@mixin box-shadow {
-  transition: all 0.4s;
-  border: 1px solid rgba(25, 86, 156, 0.5);
-  box-shadow: 10px 10px 0px 1px rgba(25, 86, 156, 0.5);
-  &:hover {
-    box-shadow: 0px 0px 0px 0px rgba(25, 86, 156, 0.5);
-  }
-}
-
 @mixin main-buttons {
   color: var(--foreground);
   font-size: 1rem;
@@ -83,7 +78,7 @@ $section-margins: 0 0 8rem 0;
   }
 }
 
-@mixin animation-details {
+@mixin hero-animation-details {
   animation-duration: 0.8s;
   animation-name: bottomToTop;
   animation-fill-mode: both;
@@ -139,6 +134,7 @@ body {
 
 body::-webkit-scrollbar {
   width: 13px;
+  background-color: var(--clr-light);
 }
 
 body::-webkit-scrollbar-track {
@@ -158,6 +154,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1 {
+  font-family: "Balsamiq Sans", sans-serif;
   font-size: 2.5rem; /* font-size: 40px */
   padding-top: 3rem;
 }
@@ -176,7 +173,7 @@ h3 {
 }
 
 a {
-  color: var(--clr-dark);
+  color: var(--clr-foreground);
   text-decoration: none;
 }
 
@@ -185,8 +182,8 @@ a {
 }
 
 .navbar {
-  background-color: rgba(236, 236, 236, 0.8);
-  border-bottom: 1px solid #858585;
+  background-color: var(--clr-navbar);
+  border-bottom: 1px solid rgba(133, 133, 133, 0.2);
   backdrop-filter: blur(4px);
   position: fixed;
   top: 0;
@@ -215,7 +212,7 @@ a {
     gap: 0.8rem;
 
     a {
-      color: var(--clr-dark);
+      color: var(--clr-foreground);
       background-color: transparent;
       border: none;
       font-size: 1rem;
@@ -246,7 +243,6 @@ a {
     }
 
     button {
-      color: var(--foreground);
       width: 28px;
       height: 28px;
       border: none;
@@ -261,8 +257,6 @@ a {
       svg {
         transition: all 0.3s;
         position: absolute;
-        stroke: var(--clr-dark);
-        stroke-width: 0.5px;
       }
 
       .darkmode-icon {
@@ -308,8 +302,8 @@ main {
   .flex-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: flex-start;
     gap: 1.5rem;
     margin-bottom: 5rem;
     padding-bottom: 3rem;
@@ -318,6 +312,7 @@ main {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      width: 100%;
 
       .section-title::after {
         content: "";
@@ -336,6 +331,14 @@ main {
       }
     }
 
+    .projects {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     .project-btns,
     .aboutme-info {
       padding-top: 0.4rem;
@@ -349,24 +352,23 @@ main {
 
       .secondary-btn {
         font-weight: 600;
-        position: relative;
 
         &::after {
           content: "";
-          background: var(--foreground) !important;
-          mask-image: url("data:image/svg+xml, %3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-          -webkit-mask-image: url("data:image/svg+xml, %3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-          mask-repeat: no-repeat;
-          -webkit-mask-repeat: no-repeat;
-          mask-position: center;
-          -webkit-mask-position: center;
-          padding-left: 1.5rem;
+          border: solid var(--foreground);
+          border-width: 0 2px 2px 0;
+          display: inline-block;
+          padding: 3px;
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
           cursor: pointer;
-          transition: all 0.3s;
+          margin-bottom: 1px;
+          margin-left: 0.3rem;
+          transition: all 0.4s;
         }
 
         &:hover::after {
-          padding-left: 2.2rem;
+          margin-left: 0.7rem;
         }
       }
     }
@@ -382,11 +384,12 @@ main {
 
       img {
         border-radius: 1rem;
-        border: 1px solid rgba(133, 133, 133, 0.2);
-        width: 300px;
+        width: 500px;
         max-width: 100%;
         cursor: pointer;
         transition: all 0.8s;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px,
+          rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
         &:hover {
           transform: translateX(10px);
@@ -445,8 +448,10 @@ main {
     .links {
       display: flex;
       gap: 40px;
+
       a {
         transition: all 0.3s;
+
         &:hover {
           transform: translateY(-10px);
         }
@@ -498,7 +503,7 @@ header {
 
 .navbar {
   animation-delay: 4.2s;
-  @include animation-details;
+  @include hero-animation-details;
 }
 
 .intro-section .animate-line span,
@@ -513,21 +518,21 @@ header {
 
 .intro-section .animate-title .animate-line.line1 span {
   animation-delay: 4.3s;
-  @include animation-details;
+  @include hero-animation-details;
 }
 .intro-section .animate-title .animate-line.line2 span {
   animation-delay: 4.4s;
-  @include animation-details;
+  @include hero-animation-details;
 }
 
 .intro-section .animate-text-1 {
   animation-delay: 4.5s;
-  @include animation-details;
+  @include hero-animation-details;
 }
 
 .intro-section .animate-text-2 {
   animation-delay: 4.6s;
-  @include animation-details;
+  @include hero-animation-details;
 }
 
 .translate {
@@ -556,17 +561,6 @@ header {
 
   h3 {
     font-size: 1.1rem; /* font-size: 17.6px */
-  }
-
-  main {
-    .flex-section {
-      .project {
-        img {
-          width: 400px;
-          max-width: 100%;
-        }
-      }
-    }
   }
 
   .aboutme-section {
@@ -607,6 +601,7 @@ header {
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
+
       margin: $section-margins;
 
       .details {

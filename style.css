@@ -1,17 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap");
 :root {
-  --clr-light: #ececec;
+  --clr-light: #fdfaf3;
   --clr-dark: #1c1c1c;
-  --clr-secondary: rgba(28, 28, 28, 0.6);
+  --clr-secondary: rgba(28, 28, 28, 0.8);
+  --clr-navbar: rgba(253, 250, 243, 0.8);
   --foreground: var(--clr-dark);
   --background: var(--clr-light);
   --paragraphs: var(--clr-secondary);
 }
 
 .darkmode {
-  --clr-light: #ececec;
+  --clr-light: #fafdf3;
   --clr-dark: #1c1c1c;
-  --clr-secondary: rgba(236, 236, 236, 0.5);
+  --clr-secondary: rgba(236, 236, 236, 0.8);
+  --clr-navbar: rgba(28, 28, 28, 0.8);
   --foreground: var(--clr-light);
   --background: var(--clr-dark);
   --paragraphs: var(--clr-secondary);
@@ -76,6 +79,7 @@ body {
 
 body::-webkit-scrollbar {
   width: 13px;
+  background-color: var(--clr-light);
 }
 
 body::-webkit-scrollbar-track {
@@ -100,6 +104,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1 {
+  font-family: "Balsamiq Sans", sans-serif;
   font-size: 2.5rem;
   /* font-size: 40px */
   padding-top: 3rem;
@@ -121,7 +126,7 @@ h3 {
 }
 
 a {
-  color: var(--clr-dark);
+  color: var(--clr-foreground);
   text-decoration: none;
 }
 
@@ -130,8 +135,8 @@ a {
 }
 
 .navbar {
-  background-color: rgba(236, 236, 236, 0.8);
-  border-bottom: 1px solid #858585;
+  background-color: var(--clr-navbar);
+  border-bottom: 1px solid rgba(133, 133, 133, 0.2);
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
   position: fixed;
@@ -178,7 +183,7 @@ a {
 }
 
 .navbar .navbar-buttons a {
-  color: var(--clr-dark);
+  color: var(--clr-foreground);
   background-color: transparent;
   border: none;
   font-size: 1rem;
@@ -216,7 +221,6 @@ a {
 }
 
 .navbar .navbar-buttons button {
-  color: var(--foreground);
   width: 28px;
   height: 28px;
   border: none;
@@ -239,8 +243,6 @@ a {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   position: absolute;
-  stroke: var(--clr-dark);
-  stroke-width: 0.5px;
 }
 
 .navbar .navbar-buttons button .darkmode-icon {
@@ -299,12 +301,12 @@ main .flex-section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: 5rem;
   padding-bottom: 3rem;
@@ -319,6 +321,7 @@ main .flex-section .details {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 main .flex-section .details .section-title::after {
@@ -339,6 +342,23 @@ main .flex-section .details .section-title::after {
 main .flex-section .details .info-text {
   padding-top: 1rem;
   border-top: 1px solid rgba(133, 133, 133, 0.2);
+}
+
+main .flex-section .projects {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main .flex-section .project-btns,
@@ -377,28 +397,27 @@ main .flex-section .aboutme-info .primary-btn:hover {
 main .flex-section .project-btns .secondary-btn,
 main .flex-section .aboutme-info .secondary-btn {
   font-weight: 600;
-  position: relative;
 }
 
 main .flex-section .project-btns .secondary-btn::after,
 main .flex-section .aboutme-info .secondary-btn::after {
   content: "";
-  background: var(--foreground) !important;
-  mask-image: url("data:image/svg+xml, %3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-  -webkit-mask-image: url("data:image/svg+xml, %3Csvg width='8' height='13' viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.70492 0.794983L0.294922 2.20498L4.87492 6.79498L0.294922 11.385L1.70492 12.795L7.70492 6.79498L1.70492 0.794983Z' /%3E%3C/svg%3E%0A");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
-  padding-left: 1.5rem;
+  border: solid var(--foreground);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
   cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  margin-bottom: 1px;
+  margin-left: 0.3rem;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 main .flex-section .project-btns .secondary-btn:hover::after,
 main .flex-section .aboutme-info .secondary-btn:hover::after {
-  padding-left: 2.2rem;
+  margin-left: 0.7rem;
 }
 
 main .flex-section .project {
@@ -413,12 +432,13 @@ main .flex-section .project .project-details {
 
 main .flex-section .project img {
   border-radius: 1rem;
-  border: 1px solid rgba(133, 133, 133, 0.2);
-  width: 300px;
+  width: 500px;
   max-width: 100%;
   cursor: pointer;
   -webkit-transition: all 0.8s;
   transition: all 0.8s;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 main .flex-section .project img:hover {
@@ -712,10 +732,6 @@ header {
   h3 {
     font-size: 1.1rem;
     /* font-size: 17.6px */
-  }
-  main .flex-section .project img {
-    width: 400px;
-    max-width: 100%;
   }
   .aboutme-section .primary-btn {
     display: inline-block;
