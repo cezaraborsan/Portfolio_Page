@@ -7,17 +7,12 @@ const contactBtn = document.querySelector(".contact-btn");
 const contactSection = document.querySelector(".contact-section");
 const aboutMeBtn = document.querySelector(".aboutme-btn");
 const aboutMeSection = document.querySelector(".aboutme-section");
+const body = document.querySelector("body");
+const sectionIntersection = document.querySelectorAll(".translate");
+const loader = document.querySelector(".loader");
+const loaderWrapper = document.querySelector(".loader-wrapper");
 
-//when refresh scroll to top
-
-
-
-
-
-
-
-
-// Scroll sections into view (Porjects and Contact sections)
+// Scroll sections into view
 
 projectsBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -45,45 +40,14 @@ function scrollToTargetAdjusted(section) {
   });
 }
 
-// let load = 0;
-
-// let loaderInterval = setInterval(bluring);
-
 // Intersection Observer, section pop up when scoll into view
 
-// const target = document.querySelectorAll(".translate");
-const body = document.querySelector("body");
-
-// const options = {
-//   rootMargin: "-20px 0px 0px",
-// };
-
-// const translateOnScroll = new IntersectionObserver(function (
-//   entries,
-//   translateOnScroll
-// ) {
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       entry.target.classList.add("visible");
-//     } else {
-//       entry.target.classList.remove("visible");
-//     }
-//   });
-//   target.unobserve(section);
-// },
-// options);
-
-// target.forEach((section) => {
-//   translateOnScroll.observe(section);
-// });
-
-const elements = document.querySelectorAll(".translate");
 const callback = (str) => {
   console.log(str);
 };
 const observer = new IntersectionObserver(handleIntersection);
 
-elements.forEach((obs) => {
+sectionIntersection.forEach((obs) => {
   observer.observe(obs);
 });
 
@@ -100,6 +64,7 @@ function handleIntersection(entries, observer) {
 }
 
 // When the user clicks on the button, scroll to the top of the document
+
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -110,16 +75,12 @@ scollTop.addEventListener("click", (e) => {
   topFunction();
 });
 
-// DARK MODE
+// DARK MODE - enable and unable the dark mode
 
 const darkModeToggle = document.querySelector("#dark-mode-toggle");
 const lightModeBtn = document.querySelector(".lightmode-icon");
 const darkModeBtn = document.querySelector(".darkmode-icon");
 let darkMode = localStorage.getItem("darkmode");
-
-// const disableDarkMode = () => {
-//   document.body.classList.remove("darkmode");
-// };
 
 const enableDarkMode = () => {
   document.body.classList.add("darkmode");
@@ -142,14 +103,6 @@ if (darkMode === "enabled") {
 darkModeToggle.addEventListener("click", () => {
   document.body.classList.toggle("darkmode");
 
-  // if (body.classList.contains("darkmode")) {
-  //   lightMode.style.transform = "translateX(0vw)";
-  //   darkMode.style.transform = "translateX(100vw)";
-  // } else {
-  //   lightMode.style.transform = "translateX(100vw)";
-  //   darkMode.style.transform = "translateX(0vw)";
-  // }
-
   darkMode = localStorage.getItem("darkmode"); // update darkMode when clicked
   if (darkMode === "disabled") {
     enableDarkMode();
@@ -158,10 +111,7 @@ darkModeToggle.addEventListener("click", () => {
   }
 });
 
-// LOADER
-
-const loader = document.querySelector(".loader");
-const loaderWrapper = document.querySelector(".loader-wrapper");
+// LOADER - add a loader when open or refresh the page
 
 function fadeIn() {
   loader.classList.add("fadeIn");
